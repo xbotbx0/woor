@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<title>
+    بوليفارد وورلد
+</title>
+
+<link rel="icon" type="image/png" href="img/logo.png"> 
+
+
+
+    <style>
+        
+  body {
+    zoom: 0.8; /* يعمل في Chrome وEdge */
+
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Cairo', sans-serif; /* استخدام خط عربي */
+        }
+
+        .section.text h1 {
+            font-weight: 700; /* خط عريض */
+            font-size: 2.5rem; /* حجم أكبر */
+            margin: 20px 0;
+        }
+
+        .section.text p {
+            font-weight: 400; /* وزن عادي للنصوص */
+            font-size: 1.2rem; /* زيادة حجم النص */
+            line-height: 1.8; /* تحسين المسافة بين السطور */
+            margin: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            font-family: 'Amiri', serif; /* خط العناوين */
+        }
+
+        .logo img {
+            height: 25px;
+            width: auto;
+            padding-top: 10px;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 4px;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #444;
+            padding: 20px;
+        }
+
+        .section img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .section.text {
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Lemonada', cursive; /* خط الوصف */
+        }
+
+        .section.buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Cairo', sans-serif; /* خط الأزرار */
+        }
+
+        .button:hover {
+            background-color: #777;
+        }
+        .section.buttons {
+    flex-direction: column;
+    align-items: center; /* لتوسيط الأزرار أفقيًا */
+    gap: 10px; /* مسافة بين الأزرار */
+}
+
+.button {
+    width: 90%; /* جعل الأزرار بعرض 80% من الشاشة */
+    max-width: 500px; /* حد أقصى للعرض إذا لزم الأمر */
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #777;
+}
+
+
+
+
+
+
+
+.section.inputs {
+    display: flex;
+    flex-direction: column; /* ترتيب الحقول عموديًا */
+    align-items: center;
+    gap: 20px; /* مسافة بين الحقول */
+    width: 90%;
+    padding: 20px;
+    
+}
+         
+
+
+
+.button {
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 1px solid #444;
+    border-radius: 5px;
+    width: 90%; /* عرض الحقول بنسبة 90% */
+    max-width: 500px; /* الحد الأقصى للعرض */
+    text-align: center;
+    background-color: #212121;
+    color: white;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #000000;
+}
+
+/* تغيير لون النص التوضيحي */
+.button::placeholder {
+    color: white; /* جعل النص التوضيحي باللون الأبيض */
+}
+
+.table-container {
+    width: 100%; /* جعل عرض الجدول 90% من الصفحة */
+    margin: 0 auto; /* توسيط الجدول داخل الصفحة */
+    border-radius: 50%;
+}
+
+table {
+    width: 100%;
+    height: 300px; /* تعيين ارتفاع الجدول */
+    border-collapse: collapse; /* إزالة الفراغ بين خلايا الجدول */
+    border-radius: 20px; /* إضافة تفاف الزوايا للجدول */
+    overflow: hidden; /* لضمان أن الزوايا المدورة تكون واضحة */
+}
+
+td {
+    border: 1px solid #ffffff; /* إضافة حد أسود للجدول */
+    text-align: right; /* توسيط النص داخل الخلايا */
+    font-size: x-large;
+    padding-right: 15px;
+}
+
+.top-box {
+    height: 80px; /* ارتفاع الصندوق العلوي */
+}
+
+.bottom-box {
+    height: 160px; /* ارتفاع الصندوق السفلي أكبر بمقدار 3 مرات */
+    padding-right: 30px;
+    font-size: xx-large;
+
+}
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">
+            <img src="img/logo.svg" alt="الشعار">
+        </div>
+    </nav>
+
+
+
+    
+
+
+
+
+
+<!-- 
+
+
+
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+
+
+ -->
+
+
+
+
+
+
+    
+    <div class="container">
+         
+        <div class="section image">
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <td class="top-box">
+                            🟦
+                            التذاكر العادية + دخول المنطقة 
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="bottom-box">
+                            Weekday Entry
+                            
+                            <br>
+                            
+                            30 ريال
+
+
+
+                            <div class="btn-group" role="group" aria-label="Basic example" style="display: flex; align-items: center; gap: 10px; padding: 10px;">
+                                <!-- زر الزيادة -->
+                                <button 
+                                type="button" 
+                                class="btn btn-secondary" 
+                                onclick="changeValue1(1)" 
+                                style="font-size: 24px; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(25, 5, 36, 0.848); border: 3px solid #ffffff; display: flex; justify-content: center; align-items: center; transition: transform 0.3s;">
+                                <i class="fa-solid fa-chevron-up" style="color: rgb(0, 255, 0); font-size: 28px;"></i>
+                            </button>
+                            
+                            <style>
+                                .btn:hover {
+                                    transform: scale(1.1); /* تكبير الزر عند التمرير */
+                                    box-shadow: 0 4px 10px rgba(75, 231, 13, 0.2); /* إضافة ظل ناعم */
+                                    
+                                }
+                            </style>
+                            
+                            
+                                <!-- زر الرقم -->
+                                <button 
+                                    type="button" 
+                                    class="btn btn-secondary" 
+                                    id="number1" 
+                                    style="font-size: 24px; width: 40px; height: 40px; border-radius: 10px; background-color: #ffffff; font-weight: bold;">
+                                    0
+                                </button>
+                            
+                                <!-- زر النقصان -->
+                                <button 
+                                type="button" 
+                                class="btn btn-secondary" 
+                                onclick="changeValue1(-1)" 
+                                style="font-size: 24px; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(5, 36, 22, 0.848); border: 3px solid #ffffff; display: flex; justify-content: center; align-items: center; transition: transform 0.3s;">
+                                <i class="fa-solid fa-chevron-down" style="color: rgb(244, 5, 5); font-size: 28px;"></i>
+                            </button>
+                            
+                            <style>
+                                .btn:hover {
+                                    transform: scale(1.1); /* تكبير الزر عند التمرير */
+                                    box-shadow: 0 4px 10px rgba(75, 231, 13, 0.2); /* إضافة ظل ناعم */
+                                    
+                                }
+                            </style>
+                            
+                                
+                            
+                                  <!-- مربع عرض النتيجة -->
+                                  <div 
+                                  id="result1" 
+                                  class="button is-primary is-light"
+                                  style="font-size: 20px; padding: 10px; padding-top: 20px; background-color: #000000; border: 3px solid rgb(255, 255, 255); border-radius: 20px; font-weight: bold; text-align: center; margin-bottom: 10px; width: 150px; height: 50px; min-width: 100px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 2);"
+                                  onclick="redirectToAnotherPage1()">
+                                  0
+                              </div>
+                              
+                                    <script>
+                                    function redirectToAnotherPage1() {
+                                        var resultContent1 = document.getElementById("result1").innerText;
+                                        
+                                        // التحقق إذا كانت القيمة غير 0
+                                        if (resultContent1 !== "0") {
+                                            localStorage.setItem("resultContent1", resultContent1); // حفظ القيمة في localStorage
+                                            window.location.href = "pay.html"; // الانتقال إلى الصفحة الثانية
+                                        } 
+                                    }
+
+
+                                    </script>
+                                                            
+                            </div>
+                            
+   
+                            <script>
+                                function changeValue1(change) {
+                                    // الحصول على العنصر الذي يحتوي على الرقم
+                                    const numberElement = document.getElementById('number1');
+                                    const resultElement = document.getElementById('result1'); // الحصول على عنصر النتيجة
+                                    
+                                    let currentValue = parseInt(numberElement.textContent); // الحصول على القيمة الحالية
+                                    
+                                    // التحقق من أن الرقم لا يكون أقل من 0 ولا يتجاوز 20
+                                    if (currentValue + change >= 0 && currentValue + change <= 20) {
+                                        currentValue += change; // تعديل القيمة بناءً على السهم
+                                        numberElement.textContent = currentValue; // تحديث النص بالرقم الجديد
+                                        
+                                        // تحديث مربع النتيجة بنفس الرقم
+                                        resultElement.textContent =" احجز بــ "+ currentValue * 30 +" ريال";
+                                    }
+                                }
+                            </script>
+                            
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>           
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+
+
+
+
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+ -->
+
+
+
+
+
+
+    
+ <div class="container">
+         
+    <div class="section image">
+        <div class="table-container">
+            <table>
+                <tr>
+                    <td class="top-box">
+                        🟦
+                        التذاكر المميزة + دخول المنطقة 
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bottom-box">
+                        التذكرة القيمة
+                        
+                        <br>
+                        
+                        125 ريال
+
+
+
+                        <div class="btn-group" role="group" aria-label="Basic example" style="display: flex; align-items: center; gap: 10px; padding: 10px;">
+                            <!-- زر الزيادة -->
+                            <button 
+                            type="button" 
+                            class="btn btn-secondary" 
+                            onclick="changeValue2(1)" 
+                            style="font-size: 24px; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(25, 5, 36, 0.848); border: 3px solid #ffffff; display: flex; justify-content: center; align-items: center; transition: transform 0.3s;">
+                            <i class="fa-solid fa-chevron-up" style="color: rgb(0, 255, 0); font-size: 28px;"></i>
+                        </button>
+                        
+                        <style>
+                            .btn:hover {
+                                transform: scale(1.1); /* تكبير الزر عند التمرير */
+                                box-shadow: 0 4px 10px rgba(75, 231, 13, 0.2); /* إضافة ظل ناعم */
+                                
+                            }
+                        </style>
+                        
+                        
+                            <!-- زر الرقم -->
+                            <button 
+                                type="button" 
+                                class="btn btn-secondary" 
+                                id="number2" 
+                                style="font-size: 24px; width: 40px; height: 40px; border-radius: 10px; background-color: #ffffff; font-weight: bold;">
+                                0
+                            </button>
+                        
+                            <!-- زر النقصان -->
+                            <button 
+                            type="button" 
+                            class="btn btn-secondary" 
+                            onclick="changeValue2(-1)" 
+                            style="font-size: 24px; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(5, 36, 22, 0.848); border: 3px solid #ffffff; display: flex; justify-content: center; align-items: center; transition: transform 0.3s;">
+                            <i class="fa-solid fa-chevron-down" style="color: rgb(244, 5, 5); font-size: 28px;"></i>
+                        </button>
+                        
+                        <style>
+                            .btn:hover {
+                                transform: scale(1.1); /* تكبير الزر عند التمرير */
+                                box-shadow: 0 4px 10px rgba(75, 231, 13, 0.2); /* إضافة ظل ناعم */
+                                
+                            }
+                        </style>
+                        
+                            
+                        
+                              <!-- مربع عرض النتيجة -->
+                              <div 
+                              id="result2" 
+                              class="button is-primary is-light"
+                              style="font-size: 20px; padding: 10px; padding-top: 20px; background-color: #000000; border: 3px solid rgb(255, 255, 255); border-radius: 20px; font-weight: bold; text-align: center; margin-bottom: 10px; width: 150px; height: 50px; min-width: 100px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 2);"
+                              onclick="redirectToAnotherPage2()">
+                              0
+                          </div>
+                          
+                                <script>
+                                function redirectToAnotherPage2() {
+                                    var resultContent2 = document.getElementById("result2").innerText;
+                                    
+                                    // التحقق إذا كانت القيمة غير 0
+                                    if (resultContent2 !== "0") {
+                                        localStorage.setItem("resultContent2", resultContent2); // حفظ القيمة في localStorage
+                                        window.location.href = "pay.html"; // الانتقال إلى الصفحة الثانية
+                                    } 
+                                }
+
+
+                                </script>
+                                                        
+                        </div>
+                        
+
+                        <script>
+                            function changeValue2(change) {
+                                // الحصول على العنصر الذي يحتوي على الرقم
+                                const numberElement = document.getElementById('number2');
+                                const resultElement = document.getElementById('result2'); // الحصول على عنصر النتيجة
+                                
+                                let currentValue = parseInt(numberElement.textContent); // الحصول على القيمة الحالية
+                                
+                                // التحقق من أن الرقم لا يكون أقل من 0 ولا يتجاوز 20
+                                if (currentValue + change >= 0 && currentValue + change <= 20) {
+                                    currentValue += change; // تعديل القيمة بناءً على السهم
+                                    numberElement.textContent = currentValue; // تحديث النص بالرقم الجديد
+                                    
+                                    // تحديث مربع النتيجة بنفس الرقم
+                                    resultElement.textContent =" احجز بــ "+ currentValue * 125 +" ريال";
+                                }
+                            }
+                        </script>
+                        
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>           
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<!-- 
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+
+
+
+
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+
+
+
+
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+    
+ <div class="container">
+         
+    <div class="section image">
+        <div class="table-container">
+            <table>
+                <tr>
+                    <td class="top-box">
+                        🟨
+                        التذاكر المميزة + دخول المنطقة 
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bottom-box">
+                         الباقة الذهبية
+                        
+                        <br>
+                        
+                        225 ريال
+
+
+
+                        <div class="btn-group" role="group" aria-label="Basic example" style="display: flex; align-items: center; gap: 10px; padding: 10px;">
+                            <!-- زر الزيادة -->
+                            <button 
+                            type="button" 
+                            class="btn btn-secondary" 
+                            onclick="changeValue3(1)" 
+                            style="font-size: 24px; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(25, 5, 36, 0.848); border: 3px solid #ffffff; display: flex; justify-content: center; align-items: center; transition: transform 0.3s;">
+                            <i class="fa-solid fa-chevron-up" style="color: rgb(0, 255, 0); font-size: 28px;"></i>
+                        </button>
+                        
+                        <style>
+                            .btn:hover {
+                                transform: scale(1.1); /* تكبير الزر عند التمرير */
+                                box-shadow: 0 4px 10px rgba(75, 231, 13, 0.2); /* إضافة ظل ناعم */
+                                
+                            }
+                        </style>
+                        
+                        
+                            <!-- زر الرقم -->
+                            <button 
+                                type="button" 
+                                class="btn btn-secondary" 
+                                id="number3" 
+                                style="font-size: 24px; width: 40px; height: 40px; border-radius: 10px; background-color: #ffffff; font-weight: bold;">
+                                0
+                            </button>
+                        
+                            <!-- زر النقصان -->
+                            <button 
+                            type="button" 
+                            class="btn btn-secondary" 
+                            onclick="changeValue3(-1)" 
+                            style="font-size: 24px; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(5, 36, 22, 0.848); border: 3px solid #ffffff; display: flex; justify-content: center; align-items: center; transition: transform 0.3s;">
+                            <i class="fa-solid fa-chevron-down" style="color: rgb(244, 5, 5); font-size: 28px;"></i>
+                        </button>
+                        
+                        <style>
+                            .btn:hover {
+                                transform: scale(1.1); /* تكبير الزر عند التمرير */
+                                box-shadow: 0 4px 10px rgba(75, 231, 13, 0.2); /* إضافة ظل ناعم */
+                                
+                            }
+                        </style>
+                        
+                            
+                        
+                              <!-- مربع عرض النتيجة -->
+                              <div 
+                              id="result3" 
+                              class="button is-primary is-light"
+                              style="font-size: 20px; padding: 10px; padding-top: 20px; background-color: #000000; border: 3px solid rgb(255, 255, 255); border-radius: 20px; font-weight: bold; text-align: center; margin-bottom: 10px; width: 150px; height: 50px; min-width: 100px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 2);"
+                              onclick="redirectToAnotherPage3()">
+                              0
+                          </div>
+                          
+                                <script>
+                                function redirectToAnotherPage3() {
+                                    var resultContent3 = document.getElementById("result3").innerText;
+                                    
+                                    // التحقق إذا كانت القيمة غير 0
+                                    if (resultContent3 !== "0") {
+                                        localStorage.setItem("resultContent3", resultContent3); // حفظ القيمة في localStorage
+                                        window.location.href = "pay.html"; // الانتقال إلى الصفحة الثانية
+                                    } 
+                                }
+
+
+                                </script>
+                                                        
+                        </div>
+                        
+
+                        <script>
+                            function changeValue3(change) {
+                                // الحصول على العنصر الذي يحتوي على الرقم
+                                const numberElement = document.getElementById('number3');
+                                const resultElement = document.getElementById('result3'); // الحصول على عنصر النتيجة
+                                
+                                let currentValue = parseInt(numberElement.textContent); // الحصول على القيمة الحالية
+                                
+                                // التحقق من أن الرقم لا يكون أقل من 0 ولا يتجاوز 20
+                                if (currentValue + change >= 0 && currentValue + change <= 20) {
+                                    currentValue += change; // تعديل القيمة بناءً على السهم
+                                    numberElement.textContent = currentValue; // تحديث النص بالرقم الجديد
+                                    
+                                    // تحديث مربع النتيجة بنفس الرقم
+                                    resultElement.textContent =" احجز بــ "+ currentValue * 225 +" ريال";
+                                }
+                            }
+                        </script>
+                        
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>           
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+
+
+
+
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+
+
+
+
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+
+
+
+
+
+##############################################################################################################
+##############################################################################################################
+##############################################################################################################
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+    
+ <div class="container">
+         
+    <div class="section image">
+        <div class="table-container">
+            <table>
+                <tr>
+                    <td class="top-box">
+                        ⬛
+                        التذاكر المميزة + دخول المنطقة 
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bottom-box">
+                        الباقة البلاتينية
+                        
+                        <br>
+                        
+                        300 ريال
+
+
+
+                        <div class="btn-group" role="group" aria-label="Basic example" style="display: flex; align-items: center; gap: 10px; padding: 10px;">
+                            <!-- زر الزيادة -->
+                            <button 
+                            type="button" 
+                            class="btn btn-secondary" 
+                            onclick="changeValue4(1)" 
+                            style="font-size: 24px; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(25, 5, 36, 0.848); border: 3px solid #ffffff; display: flex; justify-content: center; align-items: center; transition: transform 0.3s;">
+                            <i class="fa-solid fa-chevron-up" style="color: rgb(0, 255, 0); font-size: 28px;"></i>
+                        </button>
+                        
+                        <style>
+                            .btn:hover {
+                                transform: scale(1.1); /* تكبير الزر عند التمرير */
+                                box-shadow: 0 4px 10px rgba(75, 231, 13, 0.2); /* إضافة ظل ناعم */
+                                
+                            }
+                        </style>
+                        
+                        
+                            <!-- زر الرقم -->
+                            <button 
+                                type="button" 
+                                class="btn btn-secondary" 
+                                id="number4" 
+                                style="font-size: 24px; width: 40px; height: 40px; border-radius: 10px; background-color: #ffffff; font-weight: bold;">
+                                0
+                            </button>
+                        
+                            <!-- زر النقصان -->
+                            <button 
+                            type="button" 
+                            class="btn btn-secondary" 
+                            onclick="changeValue4(-1)" 
+                            style="font-size: 24px; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(5, 36, 22, 0.848); border: 3px solid #ffffff; display: flex; justify-content: center; align-items: center; transition: transform 0.3s;">
+                            <i class="fa-solid fa-chevron-down" style="color: rgb(244, 5, 5); font-size: 28px;"></i>
+                        </button>
+                        
+                        <style>
+                            .btn:hover {
+                                transform: scale(1.1); /* تكبير الزر عند التمرير */
+                                box-shadow: 0 4px 10px rgba(75, 231, 13, 0.2); /* إضافة ظل ناعم */
+                                
+                            }
+                        </style>
+                        
+                            
+                        
+                              <!-- مربع عرض النتيجة -->
+                              <div 
+                              id="result4" 
+                              class="button is-primary is-light"
+                              style="font-size: 20px; padding: 10px; padding-top: 20px; background-color: #000000; border: 3px solid rgb(255, 255, 255); border-radius: 20px; font-weight: bold; text-align: center; margin-bottom: 10px; width: 150px; height: 50px; min-width: 100px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 2);"
+                              onclick="redirectToAnotherPage4()">
+                              0
+                          </div>
+                          
+                                <script>
+                                function redirectToAnotherPage4() {
+                                    var resultContent4 = document.getElementById("result4").innerText;
+                                    
+                                    // التحقق إذا كانت القيمة غير 0
+                                    if (resultContent4 !== "0") {
+                                        localStorage.setItem("resultContent4", resultContent4); // حفظ القيمة في localStorage
+                                        window.location.href = "pay.html"; // الانتقال إلى الصفحة الثانية
+                                    } 
+                                }
+
+
+                                </script>
+                                                        
+                        </div>
+                        
+
+                        <script>
+                            function changeValue4(change) {
+                                // الحصول على العنصر الذي يحتوي على الرقم
+                                const numberElement = document.getElementById('number4');
+                                const resultElement = document.getElementById('result4'); // الحصول على عنصر النتيجة
+                                
+                                let currentValue = parseInt(numberElement.textContent); // الحصول على القيمة الحالية
+                                
+                                // التحقق من أن الرقم لا يكون أقل من 0 ولا يتجاوز 20
+                                if (currentValue + change >= 0 && currentValue + change <= 20) {
+                                    currentValue += change; // تعديل القيمة بناءً على السهم
+                                    numberElement.textContent = currentValue; // تحديث النص بالرقم الجديد
+                                    
+                                    // تحديث مربع النتيجة بنفس الرقم
+                                    resultElement.textContent =" احجز بــ "+ currentValue * 300 +" ريال";
+                                }
+                            }
+                        </script>
+                        
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>           
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+                    _______                   _______                   _______
+                 .-        -.               .-        -.               .-        -.
+                /            \             /            \             /            \
+               |              |           |              |           |              |
+               |,  .-.  .-.  ,|           |,  .-.  .-.  ,|           |,  .-.  .-.  ,|
+               | )(_o/  \o_)( |           | )(_o/  \o_)( |           | )(_o/  \o_)( |
+               |/     /\     \|           |/     /\     \|           |/     /\     \|
+               (_     ^^     _)           (_     ^^     _)           (_     ^^     _)
+                \__|IIIIII|__/             \__|IIIIII|__/             \__|IIIIII|__/
+                 | \IIIIII/ |               | \IIIIII/ |               | \IIIIII/ |
+                  \___|___ /                 \___|___ /                 \___|___ /   
+
+
+ -->
+
+
+
+
+
+
+
+
+</body>
+</html>

